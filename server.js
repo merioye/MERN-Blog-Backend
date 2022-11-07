@@ -11,7 +11,6 @@ const port = process.env.PORT || 8000;
 const corsOptions = {
     origin: process.env.CLIENT_APP_URL,
     credentials: true,
-    optionSuccessStatus: 200,
 };
 
 const uploadsPath = path.join(__dirname, "/public/uploads");
@@ -25,8 +24,8 @@ mongoose
 
 // basic app configuration
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header("Access-Control-Allow-Origin", process.env.CLIENT_APP_URL);
+    res.append("Access-Control-Allow-Credentials", "true");
+    res.append("Access-Control-Allow-Origin", process.env.CLIENT_APP_URL);
     next();
 });
 app.use(express.static(uploadsPath));
