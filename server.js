@@ -24,6 +24,11 @@ mongoose
     .catch((e) => console.log(e));
 
 // basic app configuration
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header("Access-Control-Allow-Origin", process.env.CLIENT_APP_URL);
+    next();
+});
 app.use(express.static(uploadsPath));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
