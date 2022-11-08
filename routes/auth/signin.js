@@ -32,8 +32,6 @@ router.post("/signin", async (req, res) => {
         );
         res.cookie("accessToken", accessToken, {
             httpOnly: true,
-            secure: true,
-            sameSite: "none",
             expires: new Date(Date.now() + 86400000),
         });
 
